@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,8 +51,18 @@
 				</div>
 
 				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						&nbsp;
+					<ul class="nav navbar-nav navbar-right">
+						@if (Auth::guest())
+							<li><a href="{{url('/login')}}">Log in</a></li>
+							<li><a href="{{url('/register')}}">Register</a></li>
+						@else
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle">{{Auth::user()->name}}</a></li>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{url('/logout')}}"></li>
+								</ul>
+							</li>
+						@endif
 					</ul>
 				</div>
 			</div>
